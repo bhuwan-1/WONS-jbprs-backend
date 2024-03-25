@@ -1,0 +1,27 @@
+{
+  "name": "jbprs-backend",
+  "version": "1.0.0",
+  "description": "backend for jbprs",
+  "main": "server.js",
+  "repository": "https://github.com/bhuwan-1/WONS-jbprs-backend.git",
+  "author": "bhuws <ayeitsbhuws@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.1",
+    "sequelize-cli": "^6.6.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "db:migrate": "sequelize db:migrate",
+    "db:seed": "sequelize db:seed:all",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:migrate:undo:all": "sequelize db:migrate:undo:all"
+  }
+  
+}

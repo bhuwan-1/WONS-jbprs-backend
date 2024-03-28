@@ -40,7 +40,6 @@ const operatorsAliases = {
 
 const pg = new Sequelize('wons', 'postgres', 'admin', {
   dialect: 'postgres',
-  
   define: {
     paranoid: true,
   },

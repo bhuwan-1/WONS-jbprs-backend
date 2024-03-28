@@ -10,21 +10,42 @@ module.exports = {
         primaryKey: true,
         unique: true
       },
-      name: {
+      firstName: {
+        type: Sequelize.STRING,
+      },
+      middleName: {
+        type: Sequelize.STRING,
+        allowNull: true, 
+      },
+      lastName: {
+        type: Sequelize.STRING,
+      },
+      role: {
+        type: Sequelize.STRING,
+      },
+      phone: {
+        type: Sequelize.INTEGER,
+      },
+      email: {
+        type: Sequelize.STRING,
+      },
+      password: {
         type: Sequelize.STRING,
       },
       photo_url: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      desc: {
+      cid_url: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       dob: {
         type: Sequelize.DATE,
       },
       verified: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,

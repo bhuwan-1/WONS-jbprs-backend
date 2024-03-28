@@ -6,16 +6,18 @@ module.exports = {
     return queryInterface.bulkInsert("users", [
       {
         cid: "11811001094",
-        name: "Bhuwan Sharma",
+        firstName: "Bhuwan",
+        lastName: "Sharma",
+        password: "admin",
         verified: true,
-        desc: "Software Engineer, jbprs",
         createdAt: new Date(),
       },
       {
         cid: "12345678901",
-        name: "Phuntsho Gayden",
+        firstName: "Phuntsho",
+        lastName: "Gayden",
+        password: "admin",
         verified: false,
-        desc: "Senior Software Engineer, jbprs",
         createdAt: new Date(),
       },
     ]);

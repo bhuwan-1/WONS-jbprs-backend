@@ -4,6 +4,7 @@ const { blue, green, red } = require('colorette');
 const path = require('path');
 const cors = require('cors');
 const userRoutes = require('./routes/user/userRoutes');
+const authRoutes = require('./routes/auth/authRoutes');
 
 
 require('dotenv').config();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //controllers
+app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
 app.listen(process.env.PORT, () => {

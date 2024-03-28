@@ -1,41 +1,65 @@
-const {pg, DataTypes} = require('../../helpers/sequelize')
+const { pg, DataTypes } = require("../../helpers/sequelize");
 
-const User = pg.define('User', {
-  cid: {
-    type: DataTypes.STRING,
-    primaryKey: true
+const User = pg.define(
+  "User",
+  {
+    cid: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    firstName: {
+      type: DataTypes.STRING,
+    },
+    middleName: {
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+    },
+    password: {
+      type: DataTypes.STRING,
+    },
+    role: {
+      type: DataTypes.STRING,
+    },
+    cid_url: {
+      type: DataTypes.STRING,
+    },
+    phone: {
+      type: DataTypes.INTEGER,
+    },
+    email: {
+      type: DataTypes.STRING,
+    },
+    password: {
+      type: DataTypes.STRING,
+    },
+    photo_url: {
+      type: DataTypes.STRING,
+    },
+    dob: {
+      type: DataTypes.DATE,
+    },
+    verified: {
+      type: DataTypes.BOOLEAN,
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      allowNull: true,
+      type: DataTypes.DATE,
+    },
   },
-  name: {
-    type: DataTypes.STRING,
-  },
-  photo_url: {
-    type: DataTypes.STRING
-  },
-  desc: {
-    type: DataTypes.STRING
-  },
-  dob: {
-    type: DataTypes.DATE
-  },
-  verified: {
-    type: DataTypes.BOOLEAN
-  },
-  createdAt: {
-    allowNull: false,
-    type: DataTypes.DATE
-  },
-  updatedAt: {
-    allowNull: true,
-    type: DataTypes.DATE
+  {
+    paranoid: false,
+    tableName: "users",
   }
-}, {
-  paranoid: true,
-  tableName: 'users'
-});
-
+);
 
 //associations here
 
 // Model.associations = () => {};
 
-module.exports = User
+module.exports = User;

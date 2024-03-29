@@ -9,6 +9,7 @@ module.exports = {
         firstName: "Bhuwan",
         lastName: "Sharma",
         password: "admin",
+        points: 200,
         verified: true,
         createdAt: new Date(),
       },

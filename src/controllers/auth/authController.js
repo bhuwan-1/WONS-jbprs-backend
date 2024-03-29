@@ -9,16 +9,13 @@ const register = async (req, res) => {
     if (!cidPattern.test(cid)) {
       return res.status(400).json({ message: "CID must be a 11-digit number" });
     }
-
     // Check if the CID is already in use
     const existingUser = await User.findOne({ where: { cid } });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
-
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10); // 10 is the saltRounds
-
     // Create a new user record in the database
     const newUser = await User.create({
       cid,

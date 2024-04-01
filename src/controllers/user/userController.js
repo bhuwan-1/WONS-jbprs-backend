@@ -1,7 +1,6 @@
-const { Op } = require("sequelize");
 const User = require("../../models/users/model");
 const bcrypt = require("bcrypt");
-const moment = require("moment");
+const { buildSearchCriteria } = require("../../helpers/utils");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -80,26 +79,10 @@ const deleteUser = async (req, res) => {
 };
 
 const searchUser = async (req, res) => {
-  const queryString = req.query.query;
-  const isDate = /^\d{2}-\d{2}-\d{4}$/.test(queryString);
-
-  let parsedDate;
-  if (isDate) {
-    parsedDate = moment(queryString, "DD-MM-YYYY", true).tz("Asia/Thimphu");
-  }
+  const searchCriteria = buildSearchCriteria(req, User);
   try {
     const users = await User.findAll({
-      where: {
-        [Op.or]: [
-          // we can add more search options here
-          { cid: { [Op.iLike]: `%${queryString}%` } },
-          { firstName: { [Op.iLike]: `%${queryString}%` } },
-          { middleName: { [Op.iLike]: `%${queryString}%` } },
-          { lastName: { [Op.iLike]: `%${queryString}%` } },
-          { email: { [Op.iLike]: `%${queryString}%` } },
-          parsedDate?.isValid() && { dob: parsedDate.toISOString() },
-        ].filter(Boolean),
-      },
+      where: searchCriteria,
     });
     res.json(users);
   } catch (error) {

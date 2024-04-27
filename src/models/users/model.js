@@ -1,4 +1,5 @@
 const { pg, DataTypes } = require("../../helpers/sequelize");
+const Reward = require("../rewards/model");
 
 const User = pg.define(
   "User",
@@ -59,6 +60,8 @@ const User = pg.define(
 );
 
 //associations here
+
+User.hasMany(Reward, { foreignKey: 'cid' });
 
 // Model.associations = () => {};
 

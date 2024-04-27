@@ -22,6 +22,16 @@ module.exports = {
       rewardImage_url: {
         type: Sequelize.STRING
       },
+      user_id: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        references: {
+          model: "users",
+          key: "cid",
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -7,12 +7,15 @@ const sessionMiddleware = session({
   saveUninitialized: false,
   cookie: {
     secure: true,
+    httpOnly: true,
     maxAge: 3600000,
   },
 });
 
-const createSession = (req, user) => {
+const createSession = (req,res, user) => {
+  console.log(user);
   req.session.user = { cid: user.cid };
+  res.cookie("session:", req.session.id, { httpOnly: true, secure: true });
 };
 
 const destroySession = (req, res, next) => {
